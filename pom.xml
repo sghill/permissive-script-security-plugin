@@ -90,4 +90,27 @@
             <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>4.25.0</version>
+        <configuration>
+          <activeRecipes>
+            <recipe>net.sghill.jenkins.ModernizePlugin</recipe>
+          </activeRecipes>
+        </configuration>
+        <dependencies>
+            <!-- must run `./gradlew pTML` on sghill/rewrite-jenkins first -->
+            <dependency>
+                <groupId>net.sghill.jenkins</groupId>
+                <artifactId>rewrite-recipe-starter</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 </project>
